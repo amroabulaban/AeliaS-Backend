@@ -1,10 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute");
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors());
+
 
 app.use("/", userRoute);
 
@@ -14,8 +17,8 @@ mongoose
   )
   .then(() => {
     console.log("Connected to database!");
-    app.listen(3000, () => {
-      console.log("server is runnnig on port 3000....");
+    app.listen(8000, () => {
+      console.log("server is runnnig on port 8000....");
     });
   })
   .catch((error) => {
